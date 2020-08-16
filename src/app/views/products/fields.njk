@@ -3,7 +3,7 @@
     <div>
         <select name="category_id">
             {% for category in categories %}
-                <option value="{{category.id}}"
+                <option value={{category.id}}
                     {% if product.category_id ==category.id %}
                         selected
                     {% endif %}
@@ -26,9 +26,7 @@
  <div class="item">
     <div>Descrição</div>
     <div>
-        <textarea name="description">
-            {{product.description}}
-        </textarea>
+        <textarea name="description">{{product.description}}</textarea>
     </div>
 </div>
 
@@ -42,6 +40,7 @@
             name="price"
             placeholder="Preço do produto"
             value="{{product.price}}"
+            onkeydown="Mask.apply(this, 'formatBRL')"
 
         >
     </div>
@@ -60,7 +59,7 @@
         >
     </div>
 </div>
-{% if product.status %}
+{% if (product.status == '1') or (product.status == '0') %}
 <div class="item">
     <div>Disponível</div>
         <div>
